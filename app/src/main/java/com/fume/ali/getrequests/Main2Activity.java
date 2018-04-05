@@ -13,6 +13,7 @@ import android.view.animation.OvershootInterpolator;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.github.florent37.awesomebar.ActionItem;
 import com.github.florent37.awesomebar.AwesomeBar;
 import com.robinhood.ticker.TickerUtils;
 import com.robinhood.ticker.TickerView;
@@ -28,7 +29,7 @@ public class Main2Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
-        Button button2 = findViewById(R.id.button2);
+
         final TickerView tickerView = findViewById(R.id.tickerView);
         tickerView.setCharacterList(TickerUtils.getDefaultNumberList());
         final TickerView tickerView2 = findViewById(R.id.tickerView2);
@@ -43,6 +44,14 @@ public class Main2Activity extends AppCompatActivity {
         tickerView6.setCharacterList(TickerUtils.getDefaultNumberList());
 
         AwesomeBar bar3 = findViewById(R.id.bar3);
+        bar3.displayHomeAsUpEnabled(true);
+        bar3.addAction(R.drawable.awsb_ic_three_dots,"Details");
+
+
+
+
+
+
         bar3.setOnMenuClickedListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -59,7 +68,6 @@ public class Main2Activity extends AppCompatActivity {
 
 
         Intent intent = getIntent();
-        Toast.makeText(Main2Activity.this, intent.getStringExtra("Info"), Toast.LENGTH_SHORT).show();
         Log.e("Datra", Arrays.toString(intent.getStringArrayExtra("Info")));
 
         String[] data = intent.getStringArrayExtra("Info");
@@ -68,7 +76,6 @@ public class Main2Activity extends AppCompatActivity {
         Log.e("Data", (String) data[0]);
 
         final String[] info = intent.getStringArrayExtra("Indiviudals");
-        Toast.makeText(this, (String) info[0], Toast.LENGTH_SHORT).show();
 
 
 
@@ -108,14 +115,18 @@ public class Main2Activity extends AppCompatActivity {
 
 
 
-        button2.setOnClickListener(new View.OnClickListener() {
+
+        bar3.setActionItemClickListener(new AwesomeBar.ActionItemClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onActionItemClicked(int position, ActionItem actionItem) {
                 Intent intent2 = new Intent(getApplicationContext(), Main5Activity.class);
                 intent2.putExtra("Values", info);
                 startActivity(intent2);
+
             }
         });
+
+
 
 
 

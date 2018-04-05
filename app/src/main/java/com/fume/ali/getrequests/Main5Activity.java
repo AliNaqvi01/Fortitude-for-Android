@@ -81,6 +81,8 @@ public class Main5Activity extends AppCompatActivity {
 
             }
         });
+        bar.displayHomeAsUpEnabled(true);
+
 
 
 

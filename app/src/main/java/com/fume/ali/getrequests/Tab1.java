@@ -36,10 +36,8 @@ public class Tab1 extends Fragment {
         View rootView = inflater.inflate(R.layout.tab1, container, false);
 
         Intent intent = getActivity().getIntent();
-        Toast.makeText(getContext(), intent.getStringExtra("Values"), Toast.LENGTH_SHORT).show();
         Log.e("poop", Arrays.toString(intent.getStringArrayExtra("Values")));
         final String[] info = intent.getStringArrayExtra("Values");
-        Toast.makeText(getContext(), String.valueOf(info[0]), Toast.LENGTH_SHORT).show();
 
         final TickerView tickerView = rootView.findViewById(R.id.tickerView10);
         final TickerView tickerView2 = rootView.findViewById(R.id.tickerView11);

@@ -1,14 +1,19 @@
 package com.fume.ali.getrequests;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -39,6 +44,7 @@ import java.util.Map;
 
 import mehdi.sakout.fancybuttons.FancyButton;
 import studio.carbonylgroup.textfieldboxes.ExtendedEditText;
+import studio.carbonylgroup.textfieldboxes.TextFieldBoxes;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -53,13 +59,22 @@ public class MainActivity extends AppCompatActivity {
     LoadToast lt;
     CustomCheckBox XBOX;
      CustomCheckBox PS;
+    public boolean star = true;
     FancyToast toast = null;
+
+    public void dismissKeyboard(Activity activity) {
+        InputMethodManager imm = (InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE);
+        if (null != activity.getCurrentFocus())
+            imm.hideSoftInputFromWindow(activity.getCurrentFocus()
+                    .getApplicationWindowToken(), 0);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         final ExtendedEditText extendedEditText = findViewById(R.id.extended_edit_text);
+
 
         List<String> dataset = new LinkedList<>(Arrays.asList("PC", "PS4", "XBOX"));
         lt = new LoadToast(MainActivity.this);
@@ -75,6 +90,15 @@ public class MainActivity extends AppCompatActivity {
         FancyButton fancyButton = findViewById(R.id.btn_spotify);
         fancyButton.setIconResource(R.drawable.done);
         fancyButton.setText("Search");
+
+        TextFieldBoxes tfv = findViewById(R.id.text_field_boxes);
+
+        tfv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                star = true;
+            }
+        });
 
         fancyButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -96,8 +120,8 @@ public class MainActivity extends AppCompatActivity {
                     device = "pc";
                     PS.setChecked(false, true);
                     XBOX.setChecked(false, true);
-                    InputMethodManager imm = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
-                    imm.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0);
+                    dismissKeyboard(MainActivity.this);
+
                 }
 
             }
@@ -112,8 +136,7 @@ public class MainActivity extends AppCompatActivity {
                     device = "ps";
                     PC.setChecked(false, true);
                     XBOX.setChecked(false, true);
-                    InputMethodManager imm = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
-                    imm.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0);
+                    dismissKeyboard(MainActivity.this);
 
                 }
             }
@@ -128,13 +151,14 @@ public class MainActivity extends AppCompatActivity {
                     device = "xbl";
                     PC.setChecked(false, true);
                     PS.setChecked(false, true);
-                    InputMethodManager imm = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
-                    imm.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0);
+
+
                 }
             }
         });
 
-        bar.addAction(R.drawable.awsb_ic_three_dots,"Info");
+        bar.addAction(R.drawable.awsb_ic_edit_animated,"Info");
+        bar.displayHomeAsUpEnabled(true);
 
         bar.setActionItemClickListener(new AwesomeBar.ActionItemClickListener() {
             @Override
@@ -163,8 +187,6 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
-
 
 
 

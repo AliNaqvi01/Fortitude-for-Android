@@ -6,14 +6,70 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/button10"
+    <com.robinhood.ticker.TickerView
+        android:id="@+id/tickerView20"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="62dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginStart="28dp"
-        android:text="Button"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="173dp" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.robinhood.ticker.TickerView
+        android:id="@+id/tickerView21"
+        android:layout_width="wrap_content"
+        android:layout_height="62dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="76dp"
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.robinhood.ticker.TickerView
+        android:id="@+id/tickerView22"
+        android:layout_width="wrap_content"
+        android:layout_height="62dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="136dp"
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.robinhood.ticker.TickerView
+        android:id="@+id/tickerView23"
+        android:layout_width="3dp"
+        android:layout_height="62dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="220dp"
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.robinhood.ticker.TickerView
+        android:id="@+id/tickerView24"
+        android:layout_width="wrap_content"
+        android:layout_height="62dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="280dp"
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+
 </android.support.constraint.ConstraintLayout>
