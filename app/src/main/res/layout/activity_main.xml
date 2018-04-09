@@ -218,5 +218,19 @@
         app:layout_constraintTop_toTopOf="@+id/customCheckBox2"
         app:layout_constraintVertical_bias="0.35" />
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="fill_parent"
+        android:layout_height="140dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/customCheckBox3"
+        app:srcCompat="@drawable/pc"
+        android:gravity="center_vertical"
+        android:text="Card Title"/>
+
 
 </android.support.constraint.ConstraintLayout>

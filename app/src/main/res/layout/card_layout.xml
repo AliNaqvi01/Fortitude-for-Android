@@ -10,17 +10,22 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:scaleType="fitXY"
     tools:context=".Main5Activity">
 
 
     <android.support.v7.widget.CardView
+        android:id="@+id/cardView"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        app:cardCornerRadius="5dp"
-        app:cardElevation="10dp"
-        app:contentPaddingRight="10dp"
-        app:contentPaddingLeft="10dp"
-        app:cardMaxElevation="15dp">
+        android:shape="rectangle"
+        app:cardCornerRadius="0dp"
+        app:cardElevation="5dp"
+        app:cardMaxElevation="15dp"
+        app:contentPaddingLeft="0dp"
+        app:contentPaddingRight="0dp"
+        app:contentPaddingTop="0dp"
+        app:contentPaddingBottom="20dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -29,19 +34,24 @@
 
 
             <ImageView
-                android:id="@+id/cardImage2"
-                android:layout_width="match_parent"
-                android:layout_height="170dp"
+                android:id="@+id/cardImage"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
                 android:scaleType="centerCrop" />
 
             <TextView
-                android:id="@+id/cardTitle2"
+                android:id="@+id/cardTitle"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="51dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="148dp"
                 android:gravity="center_vertical"
                 android:text="Card Title" />
+
         </LinearLayout>
 
 
     </android.support.v7.widget.CardView>
+
 </RelativeLayout>

@@ -22,8 +22,10 @@
         app:cardElevation="5dp"
         android:shape="rectangle"
         app:cardMaxElevation="7dp"
-        app:contentPaddingLeft="10dp"
-        app:contentPaddingRight="10dp">
+        app:contentPaddingLeft="0dp"
+        app:contentPaddingRight="0dp"
+        app:contentPaddingBottom="0dp"
+        app:contentPaddingTop="0dp">
 
 
         <LinearLayout
@@ -36,17 +38,18 @@
                 android:id="@+id/cardImage"
                 android:layout_width="match_parent"
                 android:layout_height="120dp"
-                android:paddingTop="40dp"
+                android:paddingTop="0dp"
+                android:adjustViewBounds="true"
                 android:scaleType="centerCrop" />
 
             <TextView
                 android:id="@+id/cardTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto"
                 android:text="TextView"
                 android:textAlignment="center"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                android:textSize="18sp" />
 
             <ListView
                 android:id="@+id/listy"

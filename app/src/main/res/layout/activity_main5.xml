@@ -5,7 +5,6 @@
     android:id="@+id/main_content"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
     tools:context="com.fume.ali.getrequests.Main5Activity">
 
     <android.support.design.widget.AppBarLayout
@@ -45,6 +44,7 @@
                 android:id="@+id/tabItem2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_above="@id/appbar"
                 android:text="Duos" />
 
             <android.support.design.widget.TabItem
@@ -70,5 +70,7 @@
         android:text="3"
         tools:layout_editor_absoluteX="121dp"
         tools:layout_editor_absoluteY="188dp" />
+
+
 
 </android.support.design.widget.CoordinatorLayout>

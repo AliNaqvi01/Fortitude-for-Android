@@ -6,6 +6,7 @@ import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.CardView;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
@@ -30,6 +31,7 @@ import java.util.Arrays;
 public class Main2Activity extends AppCompatActivity {
 
     ListView mListView;
+    String loca;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +53,6 @@ public class Main2Activity extends AppCompatActivity {
 
 
 
-
         bar.setOnMenuClickedListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -66,16 +67,27 @@ onBackPressed();
 
 
         String[] data = intent.getStringArrayExtra("Info");
+        String device = intent.getStringExtra("device");
+        Log.e("DEVUCE",device);
+
+        if("pc".equals(device)){
+            loca = "drawable://" + R.drawable.pc;
+        }else if("ps".equals(device)){
+            loca = "drawable://" + R.drawable.ps;
+        }else if ("xbl".equals(device)){
+            loca = "drawable://" + R.drawable.xbox;
+        }
+
         Log.e("Data", (String) data[2]);
         Log.e("Data", (String) data[1]);
         Log.e("Data", (String) data[0]);
-        list.add(new Card("drawable://" + R.drawable.victoryblurred, "Wins: " + String.valueOf(data[6])));
-        list.add(new Card("drawable://" + R.drawable.mapblurred, "Matches Played: " + String.valueOf(data[4])));
-        list.add(new Card("drawable://" + R.drawable.maptwoblurred, "K/D: " + data[5]));
-        list.add(new Card("drawable://" + R.drawable.map, "Yosemite"));
-        list.add(new Card("drawable://" + R.drawable.map, "Yosemite"));
-        list.add(new Card("drawable://" + R.drawable.map, "Yosemite"));
-        list.add(new Card("drawable://" + R.drawable.map, "Yosemite"));
+        list.add(new Card(loca, "Device: " + String.valueOf(data[0])));
+        list.add(new Card("drawable://" + R.drawable.victory, "Wins: " + String.valueOf(data[6])));
+        list.add(new Card("drawable://" + R.drawable.mapfiveblurred, "Matches Played: " + data[4]));
+        list.add(new Card("drawable://" + R.drawable.mapthreeblurred, "Kills: " + String.valueOf(data[5])));
+        list.add(new Card("drawable://" + R.drawable.mapfourblurred, "Time Played: " + String.valueOf(data[3])));
+        list.add(new Card("drawable://" + R.drawable.mapfourblurred, "Average Match Time: " + String.valueOf(data[2])));
+
         CustomListAdapter adapter = new CustomListAdapter(this, R.layout.activity_main2, list);
         mListView.setAdapter(adapter);
 

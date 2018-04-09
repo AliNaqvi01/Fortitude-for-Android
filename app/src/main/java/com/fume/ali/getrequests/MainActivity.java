@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
     String ApiTotalwins;
     String field;
     Editable yolo;
-    String device;
+    String device = "";
     LoadToast lt;
     CustomCheckBox XBOX;
      CustomCheckBox PS;
@@ -105,6 +105,11 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 yolo = extendedEditText.getText();
                 lt.show();
+                if(device == ""){
+
+                    toast.makeText(MainActivity.this,"Make sure you choose a system!",FancyToast.LENGTH_SHORT,FancyToast.WARNING,true).show();
+
+                }
 
                 volley();
 
@@ -151,6 +156,7 @@ public class MainActivity extends AppCompatActivity {
                     device = "xbl";
                     PC.setChecked(false, true);
                     PS.setChecked(false, true);
+                    dismissKeyboard(MainActivity.this);
 
 
                 }
@@ -282,12 +288,9 @@ public class MainActivity extends AppCompatActivity {
 
                            Intent intent = new Intent(getApplicationContext(), Main2Activity.class);
                            intent.putExtra("Info", new String[] {ApiName, ApiTotalScore, ApiAvgTime, ApiLifetimematches, ApiMatchesplayed, ApiKD, ApiTotalwins});;
+                           intent.putExtra("device", device);
                          intent.putExtra("Indiviudals", new String[]{WinsSolo, KillsSolo, MatchesSolo,KDSolo,AVGtimeSolo,WinsDuo,KillsDuo,MatchesDuo,KDDuo,AVGtimeDuo,WinsSquad,KillsSquad,MatchesSquad,KDSquad,AVGtimeSquad});
                             startActivity(intent);
-
-
-
-
 
                            Log.e("Data", ApiName);
                            Log.e("Data", ApiTotalScore);
@@ -324,9 +327,10 @@ public class MainActivity extends AppCompatActivity {
                         } catch (JSONException e) {
                             e.printStackTrace();
                             Log.e("AYOOOOOO", "err");
-                            toast.makeText(MainActivity.this,"Oops! I can't find that user",FancyToast.LENGTH_LONG,FancyToast.WARNING,false).show();
+                            if(true && device != "") {
+                                toast.makeText(MainActivity.this, "Oops! I can't find that user", FancyToast.LENGTH_LONG, FancyToast.WARNING, false).show();
 
-
+                            }
 
                         }
 
