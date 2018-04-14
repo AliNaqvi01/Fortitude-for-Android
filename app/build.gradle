@@ -9,6 +9,8 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        renderscriptTargetApi 19
+        renderscriptSupportModeEnabled true
     }
     buildTypes {
         release {
@@ -46,13 +48,14 @@ dependencies {
     compile 'com.github.dmytrodanylyk:android-morphing-button:98a4986e56'
     compile 'com.shaishavgandhi:login-buttons:0.1.2'
     compile 'com.github.medyo:fancybuttons:1.8.4'
+    compile 'com.github.medyo:android-about-page:1.2.4'
     //cardview
     compile 'com.android.support:cardview-v7:26.1.0'
 
     //Universal Image Loader
     compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
-
-
+    compile 'com.jackandphantom.android:blurimage:1.2.0'
+    compile 'jp.wasabeef:blurry:2.1.1'
 
 
 }

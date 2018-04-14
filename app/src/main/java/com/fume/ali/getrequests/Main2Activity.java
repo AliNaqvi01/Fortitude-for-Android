@@ -82,10 +82,10 @@ onBackPressed();
         Log.e("Data", (String) data[1]);
         Log.e("Data", (String) data[0]);
         list.add(new Card(loca, "Device: " + String.valueOf(data[0])));
-        list.add(new Card("drawable://" + R.drawable.victory, "Wins: " + String.valueOf(data[6])));
-        list.add(new Card("drawable://" + R.drawable.mapfiveblurred, "Matches Played: " + data[4]));
+        list.add(new Card("drawable://victory", "Wins: " + String.valueOf(data[6])));
+        list.add(new Card("drawable://mapfiveblurred", "Matches Played: " + data[4]));
         list.add(new Card("drawable://" + R.drawable.mapthreeblurred, "Kills: " + String.valueOf(data[5])));
-        list.add(new Card("drawable://" + R.drawable.mapfourblurred, "Time Played: " + String.valueOf(data[3])));
+        list.add(new Card("drawable://" + R.drawable.mapblurred, "Time Played: " + String.valueOf(data[3])));
         list.add(new Card("drawable://" + R.drawable.mapfourblurred, "Average Match Time: " + String.valueOf(data[2])));
 
         CustomListAdapter adapter = new CustomListAdapter(this, R.layout.activity_main2, list);

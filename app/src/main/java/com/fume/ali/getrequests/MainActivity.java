@@ -3,6 +3,7 @@ package com.fume.ali.getrequests;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
@@ -12,6 +13,7 @@ import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -70,11 +72,23 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
+    public boolean dispatchKeyEvent(KeyEvent e) {
+        if (e.getKeyCode() == KeyEvent.KEYCODE_ENTER) {
+            Toast.makeText(MainActivity.this,
+                    "YOU CLICKED ENTER KEY",
+                    Toast.LENGTH_LONG).show();
+            return true;
+        }
+        return super.dispatchKeyEvent(e);
+    };
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         final ExtendedEditText extendedEditText = findViewById(R.id.extended_edit_text);
-
+        Intent intenty = new Intent(getApplicationContext(), Main7Activity.class);
+        startActivity(intenty);
 
         List<String> dataset = new LinkedList<>(Arrays.asList("PC", "PS4", "XBOX"));
         lt = new LoadToast(MainActivity.this);
@@ -82,14 +96,13 @@ public class MainActivity extends AppCompatActivity {
         lt.setText("Got it. Fetching data!");
         AwesomeBar bar = findViewById(R.id.bar);
          toast = new FancyToast(MainActivity.this);
+        ImageView PC = findViewById(R.id.imageView);
+        ImageView PS = findViewById(R.id.imageView2);
+        ImageView XBOX = findViewById(R.id.imageView3);
 
-        XBOX = findViewById(R.id.customCheckBox2);
-        PS = findViewById(R.id.customCheckBox3);
-        final CustomCheckBox PC = findViewById(R.id.customCheckBox);
 
-        FancyButton fancyButton = findViewById(R.id.btn_spotify);
-        fancyButton.setIconResource(R.drawable.done);
-        fancyButton.setText("Search");
+
+
 
         TextFieldBoxes tfv = findViewById(R.id.text_field_boxes);
 
@@ -100,66 +113,40 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        fancyButton.setOnClickListener(new View.OnClickListener() {
+
+
+
+
+        PC.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                device = "pc";
+                dismissKeyboard(MainActivity.this);
                 yolo = extendedEditText.getText();
-                lt.show();
-                if(device == ""){
-
-                    toast.makeText(MainActivity.this,"Make sure you choose a system!",FancyToast.LENGTH_SHORT,FancyToast.WARNING,true).show();
-
-                }
-
                 volley();
 
             }
         });
 
-
-
-        PC.setOnCheckedChangeListener(new CustomCheckBox.OnCheckedChangeListener() {
+        PS.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onCheckedChanged(CustomCheckBox checkBox, boolean isChecked) {
-                if(isChecked){
-                    device = "pc";
-                    PS.setChecked(false, true);
-                    XBOX.setChecked(false, true);
-                    dismissKeyboard(MainActivity.this);
+            public void onClick(View view) {
 
-                }
+                device = "ps";
+                dismissKeyboard(MainActivity.this);
+                yolo = extendedEditText.getText();
+                volley();
+
 
             }
         });
-
-
-
-        PS.setOnCheckedChangeListener(new CustomCheckBox.OnCheckedChangeListener() {
+        XBOX.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onCheckedChanged(CustomCheckBox checkBox, boolean isChecked) {
-                if(isChecked){
-                    device = "ps";
-                    PC.setChecked(false, true);
-                    XBOX.setChecked(false, true);
-                    dismissKeyboard(MainActivity.this);
-
-                }
-            }
-        });
-
-
-
-        XBOX.setOnCheckedChangeListener(new CustomCheckBox.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CustomCheckBox checkBox, boolean isChecked) {
-                if(isChecked){
-                    device = "xbl";
-                    PC.setChecked(false, true);
-                    PS.setChecked(false, true);
-                    dismissKeyboard(MainActivity.this);
-
-
-                }
+            public void onClick(View view) {
+                device = "xbl";
+                dismissKeyboard(MainActivity.this);
+                yolo = extendedEditText.getText();
+                volley();
             }
         });
 
@@ -206,7 +193,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
     public void volley(){
-        StringRequest sr = new StringRequest(Request.Method.GET, "https://api.fortnitetracker.com/v1/profile/" + device + "/" + yolo.toString(),
+        StringRequest sr = new StringRequest(Request.Method.GET, "https://api.fortnitetracker.com/v1/profile/" + device+ "/" + yolo.toString(),
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -246,7 +233,7 @@ public class MainActivity extends AppCompatActivity {
                             WinsSolo = new JSONObject(response).getJSONObject("stats").getJSONObject("p2").getJSONObject("top1").getString("value");
                             KillsSolo =  new JSONObject(response).getJSONObject("stats").getJSONObject("p2").getJSONObject("kills").getString("value");
                             KDSolo = new JSONObject(response).getJSONObject("stats").getJSONObject("p2").getJSONObject("kpg").getString("value");
-                            AVGtimeSolo = new JSONObject(response).getJSONObject("stats").getJSONObject("p2").getJSONObject("avgTimePlayed").getString("displayValue");
+                         //Broeken reciever   AVGtimeSolo = new JSONObject(response).getJSONObject("stats").getJSONObject("p2").getJSONObject("avgTimePlayed").getString("displayValue");
                             MatchesSolo = new JSONObject(response).getJSONObject("stats").getJSONObject("p2").getJSONObject("matches").getString("value");
 
                         }catch (JSONException e){
@@ -258,7 +245,7 @@ public class MainActivity extends AppCompatActivity {
                             WinsDuo = new JSONObject(response).getJSONObject("stats").getJSONObject("p9").getJSONObject("top1").getString("value");
                             KillsDuo =  new JSONObject(response).getJSONObject("stats").getJSONObject("p9").getJSONObject("kills").getString("value");
                             KDDuo = new JSONObject(response).getJSONObject("stats").getJSONObject("p9").getJSONObject("kpg").getString("value");
-                            AVGtimeDuo = new JSONObject(response).getJSONObject("stats").getJSONObject("p9").getJSONObject("avgTimePlayed").getString("displayValue");
+                          //  AVGtimeDuo = new JSONObject(response).getJSONObject("stats").getJSONObject("p9").getJSONObject("avgTimePlayed").getString("displayValue");
                             MatchesDuo = new JSONObject(response).getJSONObject("stats").getJSONObject("p9").getJSONObject("matches").getString("value");
 
 
@@ -270,7 +257,7 @@ public class MainActivity extends AppCompatActivity {
                             WinsSquad = new JSONObject(response).getJSONObject("stats").getJSONObject("p10").getJSONObject("top1").getString("value");
                             KillsSquad = new JSONObject(response).getJSONObject("stats").getJSONObject("p10").getJSONObject("kills").getString("value");
                             KDSquad = new JSONObject(response).getJSONObject("stats").getJSONObject("p10").getJSONObject("kpg").getString("value");
-                            AVGtimeSquad = new JSONObject(response).getJSONObject("stats").getJSONObject("p10").getJSONObject("avgTimePlayed").getString("displayValue");
+//                            AVGtimeSquad = new JSONObject(response).getJSONObject("stats").getJSONObject("p10").getJSONObject("avgTimePlayed").getString("displayValue");
                             MatchesSquad = new JSONObject(response).getJSONObject("stats").getJSONObject("p10").getJSONObject("matches").getString("value");
 
                         }catch (JSONException e) {
@@ -278,8 +265,8 @@ public class MainActivity extends AppCompatActivity {
                             toast.makeText(MainActivity.this,"You haven't played any squad matches!",FancyToast.LENGTH_LONG,FancyToast.WARNING,false).show();
                         }
 
-                     ApiAvgTime = (String) new JSONObject(response).getJSONArray("lifeTimeStats").getJSONObject(14   ).get("value");
-                         ApiLifetimematches = (String) new JSONObject(response).getJSONArray("lifeTimeStats").getJSONObject(13   ).get("value");
+//                     ApiAvgTime = (String) new JSONObject(response).getJSONArray("lifeTimeStats").getJSONObject(14   ).get("value");
+                  ApiLifetimematches = (String) new JSONObject(response).getJSONArray("lifeTimeStats").getJSONObject(7   ).get("value");
                         ApiMatchesplayed = (String) new JSONObject(response).getJSONArray("lifeTimeStats").getJSONObject(7).get("value");
                       ApiKD = (String) new JSONObject(response).getJSONArray("lifeTimeStats").getJSONObject(10).get("value");
                         ApiTotalwins = (String) new JSONObject(response).getJSONArray("lifeTimeStats").getJSONObject(8).get("value");
@@ -334,20 +321,6 @@ public class MainActivity extends AppCompatActivity {
 
                         }
 
-                        try {
-                            jsonObject = new JSONObject(ApiInfo);
-                            ApiInfo = jsonObject.getString("accountId");
-                            Log.e("Logger", ApiInfo);
-                            JSONArray arr = new JSONArray(ApiInfo);
-                            for (int i = 0; i < arr.length(); i++) {
-
-
-
-
-                            }
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
                     }
                 },
                 new Response.ErrorListener() {

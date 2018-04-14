@@ -49,6 +49,7 @@
                 android:fontFamily="@font/roboto"
                 android:text="TextView"
                 android:textAlignment="center"
+                android:textColor="@color/cardview_light_background"
                 android:textSize="18sp" />
 
             <ListView
