@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
      CustomCheckBox PS;
     public boolean star = true;
     FancyToast toast = null;
-
+    //Test git
     public void dismissKeyboard(Activity activity) {
         InputMethodManager imm = (InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE);
         if (null != activity.getCurrentFocus())
