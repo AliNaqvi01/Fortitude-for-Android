@@ -1,4 +1,4 @@
-# Fortitude for Android
+# Fortitude for Android 🛡️ 
 
 Track your Fortnite Stats easily and quickly with Fortitude. 
 No ads, no BS, just the stats that you care about and an intuitive interface. 
