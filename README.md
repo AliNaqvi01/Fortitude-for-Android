@@ -1,5 +1,6 @@
 # 🛡️ Fortitude for Android ⚔️ 
 
+View the project here: https://play.google.com/store/apps/details?id=com.fume.ali.getrequests
 
 Track your Fortnite Stats easily and quickly with Fortitude. 
 No ads, no BS, just the stats that you care about and an intuitive interface. 
