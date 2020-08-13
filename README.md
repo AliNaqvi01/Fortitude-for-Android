@@ -18,11 +18,11 @@ Simply enter your username and choose the platform you play on, Fortitude takes 
 
 ## Installation
 
-Download the project and open it in Android Studio
+Download the project and open it in Android Studio...
 
 ## Usage
 
-Build it to your simulator or phone
+Build it to your simulator or phone...
 
 ## Contributing
 Pull requests are welcome.
