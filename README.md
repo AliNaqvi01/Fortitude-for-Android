@@ -9,7 +9,7 @@ Built using Java. The TRN stat api is called via Android Volley and presented in
 
 This project is my first dive into software development. It serves as an exercise of UI design, third party APIs and HTTP requests, JSON parsing, data persistence etc.
 
-<p float="center">
+<p align="middle">
   <img src="https://image.winudf.com/v2/image/Y29tLmZ1bWUuYWxpLmdldHJlcXVlc3RzX3NjcmVlbl8wXzE1MjM5Mzc0NTRfMDc0/screen-0.jpg?fakeurl=1&type=.jpg" width="200" />
   <img src="https://image.winudf.com/v2/image/Y29tLmZ1bWUuYWxpLmdldHJlcXVlc3RzX3NjcmVlbl8xXzE1MjM5Mzc0NTVfMDQ2/screen-1.jpg?fakeurl=1&type=.jpg" width="200" /> 
   <img src="https://image.winudf.com/v2/image/Y29tLmZ1bWUuYWxpLmdldHJlcXVlc3RzX3NjcmVlbl8yXzE1MjM5Mzc0NTVfMDE3/screen-2.jpg?fakeurl=1&type=.jpg" width="200" />
