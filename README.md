@@ -16,13 +16,12 @@ Simply enter your username and choose the platform you play on, Fortitude takes 
 </p>
 
 
-## Installation
+## Technologies
 
-Download the project and open it in Android Studio...
-
-## Usage
-
-Build it to your simulator or phone...
+- Android Studio
+- Java
+- Android Volley
+- Dynamic Toasts
 
 ## Contributing
 Pull requests are welcome.
