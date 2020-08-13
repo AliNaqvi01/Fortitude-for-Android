@@ -16,7 +16,7 @@ Simply enter your username and choose the platform you play on, Fortitude takes 
 </p>
 
 
-## Technologies
+## Technologies used
 
 - Android Studio
 - Java
